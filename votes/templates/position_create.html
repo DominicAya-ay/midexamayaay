@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block head %}
+    Add New Position
+{% endblock head %}
+
+{% block body %}
+    <form action="{% url 'votes:position_create'%}" method="POST">
+        {% csrf_token %}
+
+        {{ form|crispy }}
+
+        <input type="submit" value="Add">
+    </form>
+{% endblock body %}

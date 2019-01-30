@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock head %}
+
+{% block body %}
+
+        <div class="row mt-5 mb-3">
+                <h1> {{ candidate.lastname }}, {{ candidate.firstname }} <a href='{% url 'votes:candidate_update' candidate.id %}'> <span class="badge badge-secondary">Edit</span> </a> </h1>
+        </div>
+
+        <div class="row">
+                <small> Position: {{ candidate.position }}</small>
+        </div>
+        <div class="row">
+                <small> Birthdate: {{ candidate.birthdate }}</small>
+                 <small> {{ candidate.vote_set.count}} votes </small>
+        </div>
+        <div class="row">
+                <p class="text-justify mt-5 mb-5"> {{ candidate.platform }} <p>
+        </div>
+
+        <a href='{% url 'votes:vote' candidate.id %}'> <span class="btn btn-outline-primary ml-3">VOTE</span> </a>
+
+
+
+{% endblock body %}

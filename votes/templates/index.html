@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block head %}
+    Candidates List
+{% endblock head %}
+
+{% block body %}
+    <div class="row mt-5 mb-5">
+        <h2 class="ml-3"> All Candidates
+            <a href='{% url 'votes:position_create' %}'> <span class="btn btn-outline-primary ml-3">Add New Position</span> </a>
+            <a href='{% url 'votes:candidate_create' %}'> <span class="btn btn-outline-primary ml-3">Add New Candidate</span> </a>
+        </h2>
+    </div>
+    <div class="list-group">
+        {% for candidate in candidates %}
+            <a href="{% url 'votes:candidate_detail' candidate.id %}" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ candidate.lastname }}, {{ andidate.firstname }}</h5>
+                    <small> {{ candidate.vote_set.count }} votes </small>
+                </div>
+
+                <p class="mb-1"> {{ candidate.position }} </p>
+            </a>
+
+        {% endfor %}
+    </div>
+{% endblock body %}

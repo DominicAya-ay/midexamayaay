@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block head %}
+    The Update Page
+{% endblock head %}
+
+{% block body %}
+    <form action="{% url 'votes:candidate_update' form.instance.id %}" method="POST">
+        {% csrf_token %}
+
+        <div class="row mt-5 mb-3">
+                <h1> Edit "{{ form.lastname.value }}, {{ form.firstname.value }}" </h1>
+        </div>
+
+             {{ form|crispy }}
+        <input type="submit" value="Update">
+    </form>
+{% endblock body %}
